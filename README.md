@@ -1,13 +1,16 @@
-Shamir's Secret Sharing: Matrix Method
+# Shamir's Secret Sharing: Matrix Method
 
-Problem Statement
+## Problem Statement
+
 Given a polynomial of degree m, we require k = m + 1 points to reconstruct the polynomial coefficients, including the constant term c. The polynomial is represented as:
 
 f(x) = a_m x^m + a_{m-1} x^{m-1} + ... + a_1 x + c
 
-Input Format
+## Input Format
+
 The input is provided in JSON format, containing the number of roots and the roots themselves in various bases:
 
+```json
 {
     "keys": {
         "n": 9,
@@ -19,22 +22,27 @@ The input is provided in JSON format, containing the number of roots and the roo
     },
     ...
 }
-**Steps to Solve the Problem**
-Read JSON Input: The input JSON file is read and parsed to extract the roots.
+```
 
-Decode Y Values: Each y value is encoded in a specified base and needs to be decoded into decimal form.
+## Steps to Solve the Problem
 
-Construct the Matrix:
+1. **Read JSON Input**: The input JSON file is read and parsed to extract the roots.
+  
+2. **Decode Y Values**: Each y value is encoded in a specified base and needs to be decoded into decimal form.
 
-Create a matrix A where each row corresponds to the powers of x for each point.
-Create a vector b containing the corresponding y values.
-Solve the Matrix: Use Gaussian elimination or another suitable method to solve for the coefficients of the polynomial.
+3. **Construct the Matrix**:
+   - Create a matrix A where each row corresponds to the powers of x for each point.
+   - Create a vector b containing the corresponding y values.
 
-Extract Constant Term: The constant term c is extracted from the resulting coefficients.
+4. **Solve the Matrix**: Use Gaussian elimination or another suitable method to solve for the coefficients of the polynomial.
 
-Example
+5. **Extract Constant Term**: The constant term c is extracted from the resulting coefficients.
+
+## Example
+
 For an example input:
 
+```json
 {
     "keys": {
         "n": 9,
@@ -50,17 +58,26 @@ For an example input:
     },
     ...
 }
+```
+
 The output after processing and solving the polynomial would yield the constant term c.
 
-**Output**
+## Output
+
 The program outputs the constant term c which is part of the original polynomial.
 
-**Requirements**
-Node.js
-Any JSON parsing library (e.g., fs for reading files)
+## Requirements
 
-**How to Run**
-Clone the repository.
-Ensure Node.js is installed on your machine.
-Run the script to process the JSON input file and output the constant term c.
+- Node.js
+- Any JSON parsing library (e.g., `fs` for reading files)
+
+## How to Run
+
+1. Clone the repository.
+2. Ensure Node.js is installed on your machine.
+3. Run the script to process the JSON input file and output the constant term c.
+
+```bash
 node index.js
+```
+
